@@ -3,4 +3,13 @@ body {
 }
 .btn-hanze{
     background-color:#f07c02;
+    color:white !important;
+}
+
+.hanze {
+    background-color:white;
+    color:#f07c02 !important;
+}
+.hanze a {
+    color:#f07c02 !important;
 }
