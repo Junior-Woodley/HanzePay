@@ -1,14 +1,16 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Bootstrap core CSS -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <link href="./css/datatables.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="./css/mdb.min.css" rel="stylesheet">
 <link href="./css/style.css" rel="stylesheet"/>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<nav class="navbar navbar-expand-lg navbar-light white mb-3">
+<nav class="navbar navbar-expand-lg navbar-light white mb-3 py-3">
     <a class="navbar-brand" href="#">
         <img src="./img/hanzepay-logo.png" height="30" alt="">
     </a>	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -21,7 +23,7 @@
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Ontdek</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
