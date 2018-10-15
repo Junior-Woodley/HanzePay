@@ -1,9 +1,9 @@
 <footer class="page-footer font-small border-light border-top p-5 align-bottom">
     <div class="container text-center text-md-left">
         <div class="col-md-12 col-xs-12">
-            <a href="lol">Home</a>
-            <a href="lol">Ontdek</a>
-            <a href="lol">Contact</a>
+            <a href="index.php">Home</a>
+            <a href="ontdek.php">Ontdek</a>
+            <a href="contact.php">Contact</a>
 
         </div>
         <hr>

@@ -1,6 +1,8 @@
-body {
+body{
     background-color:#f5f7fa;
+
 }
+
 .btn-hanze{
     background-color:#f07c02;
     color:white !important;
@@ -104,6 +106,10 @@ body {
     padding-right:0.5rem;
 }
 
+.page-footer{
+    background-color:white !important;
+}
+
 .copyright{
     color: #6c7378 !important;
     font-size:0.7rem;
@@ -113,4 +119,19 @@ body {
 
 hr{
     border-top:1px #aaaaaa dotted;
+}
+
+sup {
+    top: -0.0em !important;
+}
+
+.navbar {
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,.16), 0 0px 0px 0 rgba(0,0,0,.12) !important;
+}
+
+.team-naam{
+}
+.team-taak{
+    text-transform: uppercase;
+    font-weight:800;
 }

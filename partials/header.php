@@ -11,7 +11,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<nav class="navbar navbar-expand-lg navbar-light white py-3">
+<nav class="navbar navbar-expand-lg navbar-light white border-bottom border-light py-3">
+    <div class="container">
     <a class="navbar-brand" href="index.php">
         <img src="./img/hanzepay-logo.png" height="30" alt="">
     </a>
@@ -48,5 +49,6 @@
                 </div>
             </li>
         </ul>
+    </div>
     </div>
 </nav>
