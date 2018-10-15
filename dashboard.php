@@ -2,14 +2,17 @@
 
     <body>
     <div class="container mt-3 mb-3">
+        <div class="col-md-12 col-xs-12 p-3">
+            <h4 class="greeting">Welkom, Joey!</h4>
+        </div>
         <div class="row">
             <div class="col-md-6 col-xs-6 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Uw HanzePay Saldo</h5>
                         <p class="card-text">
-                        <h3 class="balance-text">500 HP</h3>
-                        <sup class="xs-text">beschikbaar</sup>
+                        <h3 class="balance-text">500</h3>
+                        <sup class="xs-text">hanzepay credits</sup>
                         </p>
                     </div>
                 </div>
@@ -20,6 +23,7 @@
                     <div class="card-body">
                         <a href="#" class="btn btn-hanze btn-rounded">Overmaken</a>
                         <a href="#" class="btn btn-hanze btn-rounded">Aanvragen</a>
+                        <a href="#" class="btn btn-hanze btn-rounded">Klussen</a>
 
                     </div>
                 </div>
@@ -35,65 +39,81 @@
 
                         <div class="transaction-row p-2">
                             <div class="row">
-                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <div class="col-md-2 col-3 text-center float-left">
                                 <span class="transfer-datum">
                                 26 SEPT
                                 </span>
                                 </div>
-                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                <div class="col-md-6 col-5 float-left p-1">
                                     <h5 class="transfer-text">Kantine</h5>
                                     <sup class="xs-text">Betaald</sup>
                                 </div>
-                                <div class="col-md-4 col-xs-4 text-right">
-                                    - 500 HP
+                                <div class="col-md-4 col-4 text-right">
+                                    - <?php echo mt_rand(100,1000)?> HP
                                 </div>
                             </div>
                         </div>
                         <div class="transaction-row p-2">
                             <div class="row">
-                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <div class="col-md-2 col-3 text-center float-left">
                                 <span class="transfer-datum">
                                 26 SEPT
                                 </span>
                                 </div>
-                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                <div class="col-md-6 col-5 float-left p-1">
                                     <h5 class="transfer-text">Kantine</h5>
                                     <sup class="xs-text">Betaald</sup>
                                 </div>
-                                <div class="col-md-4 col-xs-4 text-right">
-                                    - 500 HP
+                                <div class="col-md-4 col-4 text-right">
+                                    - <?php echo mt_rand(100,1000)?> HP
                                 </div>
                             </div>
                         </div>
                         <div class="transaction-row p-2">
                             <div class="row">
-                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <div class="col-md-2 col-3 text-center float-left">
                                 <span class="transfer-datum">
                                 26 SEPT
                                 </span>
                                 </div>
-                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                <div class="col-md-6 col-5 float-left p-1">
                                     <h5 class="transfer-text">Kantine</h5>
                                     <sup class="xs-text">Betaald</sup>
                                 </div>
-                                <div class="col-md-4 col-xs-4 text-right">
-                                    - 500 HP
+                                <div class="col-md-4 col-4 text-right">
+                                    - <?php echo mt_rand(100,1000)?> HP
                                 </div>
                             </div>
                         </div>
                         <div class="transaction-row p-2">
                             <div class="row">
-                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <div class="col-md-2 col-3 text-center float-left">
                                 <span class="transfer-datum">
                                 26 SEPT
                                 </span>
                                 </div>
-                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                <div class="col-md-6 col-5 float-left p-1">
                                     <h5 class="transfer-text">Kantine</h5>
                                     <sup class="xs-text">Betaald</sup>
                                 </div>
-                                <div class="col-md-4 col-xs-4 text-right">
-                                    - 500 HP
+                                <div class="col-md-4 col-4 text-right">
+                                    - <?php echo mt_rand(100,1000)?> HP
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transaction-row p-2">
+                            <div class="row">
+                                <div class="col-md-2 col-3 text-center float-left">
+                                <span class="transfer-datum">
+                                26 SEPT
+                                </span>
+                                </div>
+                                <div class="col-md-6 col-5 float-left p-1">
+                                    <h5 class="transfer-text">Kantine</h5>
+                                    <sup class="xs-text">Betaald</sup>
+                                </div>
+                                <div class="col-md-4 col-4 text-right">
+                                    - <?php echo mt_rand(100,1000)?> HP
                                 </div>
                             </div>
                         </div>

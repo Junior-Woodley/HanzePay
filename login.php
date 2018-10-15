@@ -6,7 +6,7 @@
             <div class="col-md-6 col-xs-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <form class="text-center border border-light p-5">
+                        <form class="text-center  p-5">
                             <p class="h4 mb-4">Inloggen</p>
                             <input type="email" id="defaultLoginFormEmail" class="form-control mb-4"
                                    placeholder="E-mail">
@@ -26,7 +26,7 @@
                                     <a href="">Wachtwoord vergeten</a>
                                 </div>
                             </div>
-                            <button class="btn btn-hanze btn-block my-4" type="submit">Inloggen</button>
+                            <button class="btn btn-hanze btn-block btn-rounded my-4" type="submit">Inloggen</button>
                             <p>Nog geen lid?
                                 <a href="registreren.php">Registreren</a>
                             </p>

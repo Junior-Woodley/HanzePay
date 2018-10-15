@@ -90,3 +90,7 @@ body {
 .transaction-row{
     border-bottom:1px dotted #868686;
 }
+
+.greeting{
+    font-size:30px;
+}
