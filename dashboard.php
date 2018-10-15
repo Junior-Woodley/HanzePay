@@ -32,13 +32,71 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Recente activiteit</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
+
+                        <div class="transaction-row p-2">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <span class="transfer-datum">
+                                26 SEPT
+                                </span>
+                                </div>
+                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                    <h5 class="transfer-text">Kantine</h5>
+                                    <sup class="xs-text">Betaald</sup>
+                                </div>
+                                <div class="col-md-4 col-xs-4 text-right">
+                                    - 500 HP
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transaction-row p-2">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <span class="transfer-datum">
+                                26 SEPT
+                                </span>
+                                </div>
+                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                    <h5 class="transfer-text">Kantine</h5>
+                                    <sup class="xs-text">Betaald</sup>
+                                </div>
+                                <div class="col-md-4 col-xs-4 text-right">
+                                    - 500 HP
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transaction-row p-2">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <span class="transfer-datum">
+                                26 SEPT
+                                </span>
+                                </div>
+                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                    <h5 class="transfer-text">Kantine</h5>
+                                    <sup class="xs-text">Betaald</sup>
+                                </div>
+                                <div class="col-md-4 col-xs-4 text-right">
+                                    - 500 HP
+                                </div>
+                            </div>
+                        </div>
+                        <div class="transaction-row p-2">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-2 text-center float-left">
+                                <span class="transfer-datum">
+                                26 SEPT
+                                </span>
+                                </div>
+                                <div class="col-md-6 col-xs-6 float-left p-1">
+                                    <h5 class="transfer-text">Kantine</h5>
+                                    <sup class="xs-text">Betaald</sup>
+                                </div>
+                                <div class="col-md-4 col-xs-4 text-right">
+                                    - 500 HP
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
