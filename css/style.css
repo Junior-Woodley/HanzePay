@@ -62,3 +62,13 @@ body {
     color:#2c2e2f;
     font-family: 'Montserrat', sans-serif;
 }
+
+.hanze-fiets{
+    /*background-image:url("../img/hanze.jpg");*/
+    background-color:black;
+}
+
+.styled-text{
+    font-family: 'Roboto', bolditalic;
+    font-size:3em;
+}

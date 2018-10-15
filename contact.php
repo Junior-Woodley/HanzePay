@@ -2,7 +2,7 @@
 
     <body>
 
-    <div class="container card p-5 mb-3">
+    <div class="container card p-5 mt-3 mb-3">
     <section class="team-section text-center">
         <h2 class="h1-responsive font-weight-bold">Het HanzePay Team</h2>
         <p class="grey-text w-responsive mx-auto mb-5">HanzePay is mogelijk gemaakt door de volgende studenten van de Hanze Hogeschool.</p>
@@ -82,7 +82,7 @@
 
         <hr>
 
-        <section class="section">
+      z<section class="section">
             <h2 class="h1-responsive font-weight-bold text-center">Contact us</h2>
             <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
                 matter of hours to help you.</p>
