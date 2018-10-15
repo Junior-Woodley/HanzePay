@@ -8,13 +8,16 @@
 <link href="./css/mdb.min.css" rel="stylesheet">
 <link href="./css/style.css" rel="stylesheet"/>
 
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <nav class="navbar navbar-expand-lg navbar-light white py-3">
     <a class="navbar-brand" href="index.php">
         <img src="./img/hanzepay-logo.png" height="30" alt="">
-    </a>	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -26,10 +29,23 @@
                 <a class="nav-link" href="#">Ontdek</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">Dashboard</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="contact.php">Contact</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.php">Mijn Dashboard</a>
+            </li>
+            <li class="nav-item dropdown show">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-user-circle"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                     aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item waves-effect waves-light" href="#">Mijn profiel</a>
+                    <a class="dropdown-item waves-effect waves-light" href="#">Uitloggen</a>
+                </div>
             </li>
         </ul>
     </div>

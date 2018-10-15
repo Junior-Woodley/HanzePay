@@ -94,3 +94,23 @@ body {
 .greeting{
     font-size:30px;
 }
+
+.page-footer a{
+    font-size: .9375rem;
+    color: #6c7378 !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
+}
+
+.copyright{
+    color: #6c7378 !important;
+    font-size:0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform:uppercase;
+}
+
+hr{
+    border-top:1px #aaaaaa dotted;
+}
