@@ -67,8 +67,8 @@ if (isset($_POST['registreren'])) {
             $naam .= " " . $achternaam;
 
             // Bouw de query voor het inserten van de user.
-            $sql = "INSERT INTO user (name, email, password, studentnr)
-                VALUES ('" . $naam . "', '" . $email . "','" . $wachtwoord . "','" . $studentnummer . "')";
+            $sql = "INSERT INTO users (name, email, password, studentnr)
+                VALUES ('" . $naam . "', '" . $email . "','" . md5($wachtwoord) . "','" . $studentnummer . "')";
 
             $db = DBconnection::getConnection();
 
@@ -100,10 +100,12 @@ function user_exists($email)
         var_dump("Connection failed: " . $db->connect_error);
     }
 
-    $sql = "SELECT count(*) as c FROM user WHERE email='" . $email . "'";
+    $sql = "SELECT count(*) as c FROM users WHERE email='" . $email . "'";
     $results = $db->query($sql);
 
     $db = null;
+
+    var_dump($results);
     if (!$results->num_rows < 1) {
         return false;
     } else {

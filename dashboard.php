@@ -1,4 +1,7 @@
-<?php include 'partials/header.php' ?>
+<?php include 'partials/header.php';
+@require ("getInfo.php");
+?>
+
 
     <body>
     <div class="container mt-3 mb-3">
@@ -11,7 +14,7 @@
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Uw HanzePay Saldo</h5>
                         <p class="card-text">
-                        <h3 class="balance-text">500</h3>
+                        <h3 class="balance-text"><?php echo getSaldo($_SESSION['user_id']) ?></h3>
                         <sup class="xs-text">hanzepay credits</sup>
                         </p>
                     </div>

@@ -29,7 +29,7 @@ if (isset($_POST['inloggen'])) {
             $_SESSION['email'] = $userInfo['email'];
             $_SESSION['studentnr'] = $userInfo['studentnr'];
             $_SESSION['roll'] = $userInfo['roll'];
-            $_SESSION['walletID'] = $userInfo['walletID'];
+            $_SESSION['user_id'] = $userInfo['idUser'];
 
             header("Location: dashboard.php");
         }
@@ -44,7 +44,7 @@ function CheckLoginInDB($email, $wachtwoord)
         var_dump("Connection failed: " . $db->connect_error);
     }
 
-    $sql = "SELECT * FROM user WHERE email='" . $email . "' AND password='" . $wachtwoord . "'";
+    $sql = "SELECT * FROM users WHERE email='" . $email . "' AND password='" . md5($wachtwoord) . "'";
 
     $results = $db->query($sql);
 
@@ -55,18 +55,16 @@ function CheckLoginInDB($email, $wachtwoord)
     }
 
     return true;
-
 }
 
 function getUserInfo($email, $wachtwoord) {
-    var_dump($email, $wachtwoord);
     $db = DBconnection::getConnection();
 
     if ($db->connect_error) {
         var_dump("Connection failed: " . $db->connect_error);
     }
 
-    $sql = "SELECT name, email, studentnr, Rolls_idRolls as 'roll', Wallets_idWallets as 'walletID' FROM user WHERE email='" . $email . "' AND password='" . $wachtwoord . "'";
+    $sql = "SELECT idUser ,name, email, studentnr, rolls_id as 'roll' FROM users WHERE email='" . $email . "' AND password='" . md5($wachtwoord) . "'";
 
     $result = $db->query($sql);
 
@@ -74,6 +72,7 @@ function getUserInfo($email, $wachtwoord) {
 
     $row = $result->fetch_assoc();
 
+    var_dump($row);
     return $row;
 }
 
