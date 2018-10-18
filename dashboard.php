@@ -3,7 +3,7 @@
     <body>
     <div class="container mt-3 mb-3">
         <div class="col-md-12 col-xs-12 p-3">
-            <h4 class="greeting">Welkom, Joey!</h4>
+            <h4 class="greeting">Welkom, <?php echo $_SESSION['naam']?></h4>
         </div>
         <div class="row">
             <div class="col-md-6 col-xs-6 mb-3">

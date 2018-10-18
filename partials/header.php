@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Bootstrap core CSS -->
@@ -34,6 +36,7 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">
+            <?php if(isset($_SESSION['naam'])) { ?>
             <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Mijn Dashboard</a>
             </li>
@@ -45,9 +48,17 @@
                 <div class="dropdown-menu dropdown-menu-right dropdown-default"
                      aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item waves-effect waves-light" href="#">Mijn profiel</a>
-                    <a class="dropdown-item waves-effect waves-light" href="#">Uitloggen</a>
+                    <a class="dropdown-item waves-effect waves-light" href="./logoutHandler.php">Uitloggen</a>
                 </div>
             </li>
+            <?php } else { ?>
+            <li class="nav-item">
+                <a class="nav-link" href="login.php">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="registreren.php">Registreren</a>
+            </li>
+            <?php } ?>
         </ul>
     </div>
     </div>

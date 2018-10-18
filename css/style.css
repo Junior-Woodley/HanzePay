@@ -3,6 +3,10 @@ body{
 
 }
 
+.inputNoBotMargin {
+    margin-bottom: 0;
+}
+
 .btn-hanze{
     background-color:#f07c02;
     color:white !important;
