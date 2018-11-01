@@ -7,7 +7,6 @@
         <div class="col-md-12 justify-content-center d-flex">
             <div class="col-md-6 col-xs-6 mb-3">
                 <div class="card">
-                    <div class="card-body">
                         <!-- Default form register -->
                         <form method="POST" action="<?PHP echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
                               class="text-center p-5">
@@ -47,6 +46,13 @@
                                 Te vinden op je studentenpas
                             </small>
                             <span class="error"> <?php echo $studentnummerErr; ?></span>
+
+                            <div class="form-control mt-4">
+                            <input type="radio" name="geslacht" value="man"> Man
+                            <input type="radio" name="geslacht" value="vrouw"> Vrouw
+                            </div>
+
+                            <span class="error"> <?php echo $geslachtErr; ?></span>
 
                             <button class="btn btn-hanze btn-rounded my-4 btn-block" type="submit" name="registreren">
                                 Aanmelden

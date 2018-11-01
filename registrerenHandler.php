@@ -2,7 +2,7 @@
 
 @require("DBconnection.php");
 
-$voornaamErr = $achternaamErr = $emailErr = $wachtwoordErr = $studentnummerErr = "";
+$voornaamErr = $achternaamErr = $emailErr = $wachtwoordErr = $studentnummerErr = $geslachtErr = "";
 $emptyMsg = "Dit veld is verplicht";
 $specialCharMsg = "Dit veld mag geen speciale tekens bevatten";
 
@@ -12,6 +12,9 @@ if (isset($_POST['registreren'])) {
     $email = $_POST['email'];
     $wachtwoord = $_POST['wachtwoord'];
     $studentnummer = $_POST['studentnummer'];
+    if (!empty($_POST['geslacht'])) {
+        $geslacht = $_POST['geslacht'];
+    }
 
     // Zet error bericht als er:
     // Geen voornaam is mee gegeven.
@@ -23,6 +26,12 @@ if (isset($_POST['registreren'])) {
         $voornaamErr = "Je voornaam mag geen spatie bevatten";
     } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $voornaam)) {
         $voornaamErr = $specialCharMsg;
+    }
+
+    // Zet error bericht als er:
+    // Geen geslacht is geselecteerd.
+    if (empty($geslacht)) {
+        $geslachtErr = "Er moet een geslacht worden geselecteerd";
     }
 
     // Zet error bericht als er:
@@ -59,7 +68,7 @@ if (isset($_POST['registreren'])) {
     }
 
     // Als er geen error messages zijn voeg dan de user toe aan de databases
-    if (empty($voornaamErr) && empty($achternaamErr) && empty($emailErr) && empty($wachtwoordErr) && empty($studentnummerErr)) {
+    if (empty($voornaamErr) && empty($achternaamErr) && empty($emailErr) && empty($wachtwoordErr) && empty($studentnummerErr) && empty($geslachtErr)) {
 
         // Als de gebruiker niet bestaad de user toevoegen.
         if (!user_exists($email)) {
@@ -67,8 +76,8 @@ if (isset($_POST['registreren'])) {
             $naam .= " " . $achternaam;
 
             // Bouw de query voor het inserten van de user.
-            $sql = "INSERT INTO users (name, email, password, studentnr)
-                VALUES ('" . $naam . "', '" . $email . "','" . md5($wachtwoord) . "','" . $studentnummer . "')";
+            $sql = "INSERT INTO users (name, email, password, studentnr, geslacht)
+                VALUES ('" . $naam . "', '" . $email . "','" . md5($wachtwoord) . "','" . $studentnummer . "', '" . $geslacht . "')";
 
             $db = DBconnection::getConnection();
 
