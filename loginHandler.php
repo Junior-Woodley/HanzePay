@@ -17,6 +17,8 @@ if (isset($_POST['inloggen'])) {
         $wachtwoordErr = "Er moet een wachtwoord gegeven worden";
     } elseif (strlen($wachtwoord) < 8) {
         $wachtwoordErr = "Het wachtwoord is altijd 8 tekens of langer";
+    }  elseif (preg_match('/\s/', $wachtwoord)) {
+        $wachtwoordErr = "Je email mag geen spatie bevatten";
     }
 
     if (empty($emailErr) && empty($wachtwoordErr)) {

@@ -26,6 +26,8 @@ if (isset($_POST['registreren'])) {
         $voornaamErr = "Je voornaam mag geen spatie bevatten";
     } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $voornaam)) {
         $voornaamErr = $specialCharMsg;
+    } elseif (ctype_alnum($voornaam)) {
+        $voornaamErr = "Mag alleen letters bevatten";
     }
 
     // Zet error bericht als er:
@@ -41,6 +43,8 @@ if (isset($_POST['registreren'])) {
         $achternaamErr = $emptyMsg;
     } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $achternaam)) {
         $achternaamErr = $specialCharMsg;
+    } elseif (ctype_alnum($achternaam)) {
+        $achternaamErr = "Mag alleen letters bevatten";
     }
 
     // Zet error bericht als er:
@@ -49,6 +53,8 @@ if (isset($_POST['registreren'])) {
         $emailErr = $emptyMsg;
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailErr = "Dit is geen correct email adres";
+    } elseif (preg_match('/\s/', $email)) {
+        $emailErr = "Je email mag geen spatie bevatten";
     }
 
     // Zet error bericht als er:
@@ -58,13 +64,17 @@ if (isset($_POST['registreren'])) {
         $wachtwoordErr = $emptyMsg;
     } elseif (strlen($wachtwoord) < 8) {
         $wachtwoordErr = "Het wacht woord moet 8 of meer karakters bevatten";
+    } elseif (preg_match('/\s/', $wachtwoord)) {
+        $wachtwoordErr = "Je email mag geen spatie bevatten";
     }
 
     // Zet error bericht als er:
     // Geen studentnummer is mee gegeven.
     // Geen geldig studentnummer is mee gegeven.
-    if ((!empty($studentnummer)) && (strlen($studentnummer) < 6 || strlen($studentnummer) > 6)) {
+    if ((!empty($studentnummer)) && (strlen($studentnummer) < 6 || strlen($studentnummer) > 6) && is_numeric($studentnummer)) {
         $studentnummerErr = "Dit is geen geldig studentnummer";
+    } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $studentnummer)) {
+        $studentnummerErr = $specialCharMsg;
     }
 
     // Als er geen error messages zijn voeg dan de user toe aan de databases
