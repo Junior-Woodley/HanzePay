@@ -5,7 +5,6 @@
 <!-- Bootstrap core CSS -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:regular,bolditalic" rel="stylesheet">
 <link href="./css/bootstrap.min.css" rel="stylesheet">
-<link href="./css/datatables.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="./css/mdb.min.css" rel="stylesheet">
 <link href="./css/style.css" rel="stylesheet"/>
@@ -48,7 +47,7 @@
                 <div class="dropdown-menu dropdown-menu-right dropdown-default"
                      aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item waves-effect waves-light" href="#">Mijn profiel</a>
-                    <a class="dropdown-item waves-effect waves-light" href="./logoutHandler.php">Uitloggen</a>
+                    <a class="dropdown-item waves-effect waves-light" href="./handlers/logoutHandler.php">Uitloggen</a>
                 </div>
             </li>
             <?php } else { ?>

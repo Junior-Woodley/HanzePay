@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="team-lid text-center col-md-6 col-6 p-3">
                                 <div class="team-foto">
-                                    <img class="rounded-circle img-thumbnail w-50" src="./img/joey.png"/>
+                                    <img class="rounded-circle img-thumbnail w-50" src="img/joey.png"/>
                                 </div>
                                 <div class="team-naam">
                                     Joey Kheireddine
@@ -49,7 +49,7 @@
                             </div>
                             <div class="team-lid text-center col-md-6 col-6 p-3">
                                 <div class="team-foto">
-                                    <img class="rounded-circle img-thumbnail w-50" src="./img/joey.png"/>
+                                    <img class="rounded-circle img-thumbnail w-50" src="img/joey.png"/>
                                 </div>
                                 <div class="team-naam">
                                     Joey Kheireddine
@@ -66,7 +66,7 @@
                             </div>
                             <div class="team-lid text-center col-md-6 col-6 p-3">
                                 <div class="team-foto">
-                                    <img class="rounded-circle img-thumbnail w-50" src="./img/joey.png"/>
+                                    <img class="rounded-circle img-thumbnail w-50" src="img/joey.png"/>
                                 </div>
                                 <div class="team-naam">
                                     Joey Kheireddine
@@ -83,7 +83,7 @@
                             </div>
                             <div class="team-lid text-center col-md-6 col-6 p-3">
                                 <div class="team-foto">
-                                    <img class="rounded-circle img-thumbnail w-50" src="./img/joey.png"/>
+                                    <img class="rounded-circle img-thumbnail w-50" src="img/joey.png"/>
                                 </div>
                                 <div class="team-naam">
                                     Joey Kheireddine

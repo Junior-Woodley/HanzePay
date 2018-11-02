@@ -1,5 +1,6 @@
 <?php
-@require("DBconnection.php");
+
+@require("./classes/DBconnection.php");
 
 $emailErr = $wachtwoordErr = "";
 

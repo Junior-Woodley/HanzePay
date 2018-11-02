@@ -8,6 +8,7 @@
 
 class DBconnection
 {
+
     private static $db;
     private $connection;
 

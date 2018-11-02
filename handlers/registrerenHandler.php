@@ -1,8 +1,10 @@
 <?php
 
-@require("DBconnection.php");
+
+@require ("./functions/functions.php");
 
 $voornaamErr = $achternaamErr = $emailErr = $wachtwoordErr = $studentnummerErr = $geslachtErr = "";
+
 $emptyMsg = "Dit veld is verplicht";
 $specialCharMsg = "Dit veld mag geen speciale tekens bevatten";
 
@@ -24,10 +26,10 @@ if (isset($_POST['registreren'])) {
         $voornaamErr = $emptyMsg;
     } elseif (preg_match('/\s/', $voornaam)) {
         $voornaamErr = "Je voornaam mag geen spatie bevatten";
-    } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $voornaam)) {
+    } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬]/', $voornaam)) {
         $voornaamErr = $specialCharMsg;
-    } elseif (ctype_alnum($voornaam)) {
-        $voornaamErr = "Mag alleen letters bevatten";
+    } elseif (preg_match('#[0-9]#', $voornaam)) {
+        $voornaamErr = "Mag geen cijfers gebruiken";
     }
 
     // Zet error bericht als er:
@@ -43,8 +45,8 @@ if (isset($_POST['registreren'])) {
         $achternaamErr = $emptyMsg;
     } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $achternaam)) {
         $achternaamErr = $specialCharMsg;
-    } elseif (ctype_alnum($achternaam)) {
-        $achternaamErr = "Mag alleen letters bevatten";
+    } elseif (preg_match('#[0-9]#', $achternaam)) {
+        $achternaamErr = "Mag geen cijfers bevatten";
     }
 
     // Zet error bericht als er:
@@ -80,8 +82,8 @@ if (isset($_POST['registreren'])) {
     // Als er geen error messages zijn voeg dan de user toe aan de databases
     if (empty($voornaamErr) && empty($achternaamErr) && empty($emailErr) && empty($wachtwoordErr) && empty($studentnummerErr) && empty($geslachtErr)) {
 
-        // Als de gebruiker niet bestaad de user toevoegen.
-        if (!user_exists($email)) {
+        // Als de gebruiker niet bestaat de user toevoegen.
+        if (user_exists($email)) {
             $naam = $voornaam;
             $naam .= " " . $achternaam;
 
@@ -111,23 +113,3 @@ if (isset($_POST['registreren'])) {
     }
 }
 
-function user_exists($email)
-{
-    $db = DBconnection::getConnection();
-
-    if ($db->connect_error) {
-        var_dump("Connection failed: " . $db->connect_error);
-    }
-
-    $sql = "SELECT count(*) as c FROM users WHERE email='" . $email . "'";
-    $results = $db->query($sql);
-
-    $db = null;
-
-    var_dump($results);
-    if (!$results->num_rows < 1) {
-        return false;
-    } else {
-        return true;
-    }
-}

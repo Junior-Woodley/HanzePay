@@ -1,6 +1,6 @@
 <?php include 'partials/header.php' ?>
 
-<?php include 'registrerenHandler.php' ?>
+<?php include 'handlers/registrerenHandler.php' ?>
 
     <body>
     <div class="container mt-3 mb-3">

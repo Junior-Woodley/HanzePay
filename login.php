@@ -1,6 +1,6 @@
-<?php include 'partials/header.php' ?>
+<?php include 'partials/header.php'; ?>
 
-<?php include 'loginHandler.php' ?>
+<?php include 'handlers/loginHandler.php'; ?>
 
     <body>
     <div class="container mt-3 mb-3">

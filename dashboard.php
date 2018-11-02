@@ -1,7 +1,6 @@
 <?php include 'partials/header.php';
-@require ("getInfo.php");
+@require("functions/functions.php");
 ?>
-
 
     <body>
     <div class="container mt-3 mb-3">
@@ -24,10 +23,9 @@
             <div class="col-md-6 col-xs-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <a href="#" class="btn btn-hanze btn-rounded">Overmaken</a>
+                        <a href="overmaken.php" class="btn btn-hanze btn-rounded">Overmaken</a>
                         <a href="#" class="btn btn-hanze btn-rounded">Aanvragen</a>
                         <a href="#" class="btn btn-hanze btn-rounded">Klussen</a>
-
                     </div>
                 </div>
             </div>
@@ -129,7 +127,7 @@
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Vragen?</h5>
                         <p class="card-text">
-                            Indien u vragen heeft bezoek dan onze <a href="./contact.php">contact</a> pagina.</p>
+                            Indien u vragen heeft bezoek dan onze <a href="contact.php">contact</a> pagina.</p>
                     </div>
                 </div>
             </div>
