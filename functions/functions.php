@@ -32,6 +32,7 @@ function studentnummer_registerd($studentnummer)
     return $results;
 }
 
+// Haalt een lijst met alle emails behalve van de huidige user als die er is op.
 function getEmailList()
 {
     $db = DBconnection::getConnection();
@@ -58,6 +59,7 @@ function getEmailList()
     return $emails;
 }
 
+// Haalt de saldo van de huidige user op.
 function getSaldo($user_id) {
     $db = DBconnection::getConnection();
 
@@ -72,6 +74,7 @@ function getSaldo($user_id) {
     return $row['saldo'];
 }
 
+// Registreert een nieuwe user.
 function registreerNieuweUser($naam, $email, $wachtwoord, $studentnummer, $geslacht) {
     $db = DBconnection::getConnection();
 
@@ -89,6 +92,7 @@ function registreerNieuweUser($naam, $email, $wachtwoord, $studentnummer, $gesla
     }
 }
 
+// Zet het saldo over bij het overmaken.
 function transferSaldo($aantal, $ontvangerEmail, $beschrijving, $email) {
     // Maak verbinding met de databases.
     $db = DBconnection::getConnection();
@@ -122,33 +126,30 @@ function transferSaldo($aantal, $ontvangerEmail, $beschrijving, $email) {
     }
 }
 
-// Voegd de transactie data aan de database toe. $emailArray = [$verzenderEmail, $ontvangerEmail].
-function transactionAdd($beschrijving,  $aantal, $emailArray) {
+// Voegt de transactie data aan de database toe. $emailArray = [$verzenderEmail, $ontvangerEmail].
+function transactionAdd($beschrijving, $aantal, $emailArray) {
+    $walletIds = [];
     $userIds = [];
 
     $db = DBconnection::getConnection();
 
     checkconnection($db);
 
-    // Add transaction data to databases
-    // Add transaction link to wallet //  add both wallets
-    // Maak sql die de transactie toevoegd.
-    $sqlTransactie = "INSERT INTO transactions (description, amount) VALUES ('". $beschrijving ."', '". $aantal ."')";
+    foreach ($emailArray as $email) {
+        $sqlGetUser_id = "SELECT idUser FROM users WHERE email = '" . $email . "'";
+
+        $result2 = $db->query($sqlGetUser_id);
+
+        $id = $result2->fetch_assoc();
+
+        array_push($userIds, $id["idUser"]);
+    }
+
+    // Plaats de transactie
+    $sqlTransactie = "INSERT INTO transactions (description, amount, sender_user_id, receiver_user_id) VALUES ('". $beschrijving ."', '". $aantal ."', '" . $userIds[0] . "', '" . $userIds[1] . "')";
 
     if (!$db->query($sqlTransactie)) {
         return false;
-    }
-
-    // Haal wallet id van de sender en ontvanger op.
-    foreach ($emailArray as $email) {
-        // Get users wallet_id
-        $sqlGetUserWallet_id = "SELECT idWallet FROM wallets WHERE idUser = (SELECT idUser FROM users WHERE email = '" . $email . "')";
-
-        $result = $db->query($sqlGetUserWallet_id);
-
-        $id = $result->fetch_assoc();
-
-        array_push($userIds, $id["idWallet"]);
     }
 
     // Haal transactie ID van de geplaatste transactie op.
@@ -157,15 +158,61 @@ function transactionAdd($beschrijving,  $aantal, $emailArray) {
     $transactionID = ($db->query($sqlGetTransactionID))->fetch_assoc();
     $transactionID = $transactionID["idTransaction"];
 
-    // Verbind de wallets aan de transactie in de DB.
-    $sqlTransactieToWallets = "INSERT INTO transaction_has_wallets (Transaction_id, Wallets_id_Sender, Wallets_id_Receiver) VALUES ('" . $transactionID . "' , '" . $userIds[0] . "' , '" . $userIds[1] . "')";
+    $i = 0;
 
-    if ($db->query($sqlTransactieToWallets)) {
-        return true;
-    } else {
-        return false;
+    foreach ($emailArray as $email) {
+        // Get users wallet_id
+        $sqlGetUserWallet_id = "SELECT idWallet FROM wallets WHERE idUser = (SELECT idUser FROM users WHERE email = '" . $email . "')";
+
+        $result1 = $db->query($sqlGetUserWallet_id);
+
+        $id = $result1->fetch_assoc();
+
+        // Verbind de wallets aan de transactie in de DB.
+        $sqlTransactieToWallets = "INSERT INTO transaction_has_wallets (transaction_id, wallet_id) VALUES ('" . $transactionID . "' , '" . $id['idWallet'] . "')";
+
+        if ($db->query($sqlTransactieToWallets)) {
+            if ($i == 1) {
+                return true;
+            }
+        } else {
+            if ($i == 1) {
+                return false;
+            }
+        }
+
+        $i++;
     }
 }
+
+// Haalt een lijst van de activiteiten van een user op.
+function getRecentActivity($user_id) {
+    $db = DBconnection::getConnection();
+
+    checkconnection($db);
+
+    $sqlGetActivity = "SELECT t.idTransaction as 'transactionID', t.amount as 'amount', t.description as 'description' ,DAY(t.createdDate) as 'day', MONTH(t.createdDate) as 'month', YEAR(t.createdDate) as 'year'
+                        FROM users u
+                        INNER JOIN wallets w ON w.idUser = u.idUser
+                        INNER JOIN transaction_has_wallets thw ON thw.wallet_id = w.idWallet
+                        INNER JOIN transactions t ON t.idTransaction = thw.transaction_id
+                        WHERE w.idUser = '" . $user_id . "'";
+
+    $results = $db->query($sqlGetActivity);
+
+    if ($results->num_rows > 0) {
+        while ($row = $results->fetch_assoc()) {
+        // Doe dingen met de data
+        }
+    } else {
+        // Geef data terug die zeggen dat er nog geen activiteit heeft plaats gevonden
+    }
+};
+
+// Haalt betaalverzoeken op
+function getPaymentRequest() {
+
+};
 
 // Checkt de verbinding met de databases.
 function checkconnection($db) {

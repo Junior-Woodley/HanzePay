@@ -37,7 +37,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Recente activiteit</h5>
-
+                        <?php getRecentactivity($_SESSION['user_id']); ?>
                         <div class="transaction-row p-2">
                             <div class="row">
                                 <div class="col-md-2 col-3 text-center float-left">
