@@ -81,3 +81,61 @@ function getSaldo($user_id) {
 
     return $row['saldo'];
 }
+
+function registreerNieuweUser($naam, $email, $wachtwoord, $studentnummer, $geslacht) {
+    // Bouw de query voor het inserten van de user.
+    $sql = "INSERT INTO users (name, email, password, studentnr, geslacht)
+                VALUES ('" . $naam . "', '" . $email . "','" . $wachtwoord . "','" . $studentnummer . "', '" . $geslacht . "')";
+
+    $db = DBconnection::getConnection();
+
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+
+    if ($db->query($sql) === TRUE) {
+        header("Location: login.php");
+        die();
+    } else {
+        var_dump("Error: " . $sql . "<br>" . $db->error);
+    }
+    // connectie weer sluiten
+
+    $db = null;
+}
+
+function transferSaldo($aantal, $ontvangerEmail, $beschrijving, $email) {
+    // Maak verbinding met de databases.
+    $db = DBconnection::getConnection();
+
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+
+    // sql voor afschrijven overgemaakte bedrag.
+    $sqlVerzender = "UPDATE wallets SET saldo = saldo - $aantal WHERE idUser = (SELECT idUser FROM users WHERE email = '".$email."')";
+
+    // sql voor toevoegen overgemaakte bedrag.
+    $sqlOntvanger = "UPDATE wallets SET saldo = saldo + $aantal WHERE idUser = (SELECT idUser FROM users WHERE email = '". $ontvangerEmail ."')";
+
+    // Maak sql die de transactie toevoegd.
+    $sqlTransactie = "INSERT INTO transactions (description, amount, sender, receiver) VALUES ('". $beschrijving ."', '". $aantal ."', '". $email ."', '". $ontvangerEmail ."')";
+
+    if ($db->query($sqlVerzender) === TRUE) {
+        if ($db->query($sqlOntvanger) === TRUE) {
+            if ($db->query($sqlTransactie) === TRUE) {
+                print_r("Succes volle transactie");
+            } else {
+                var_dump("Error: " . $sqlTransactie . "<br>" . $db->error);
+            }
+        } else {
+            var_dump("Error: " . $sqlOntvanger . "<br>" . $db->error);
+        }
+    } else {
+        var_dump("Error: " . $sqlVerzender . "<br>" . $db->error);
+    }
+
+    // connectie weer sluiten
+    $db = null;
+}
+

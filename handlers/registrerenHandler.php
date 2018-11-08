@@ -9,11 +9,13 @@ $emptyMsg = "Dit veld is verplicht";
 $specialCharMsg = "Dit veld mag geen speciale tekens bevatten";
 
 if (isset($_POST['registreren'])) {
+    // Van de data uit het form op.
     $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
     $email = $_POST['email'];
     $wachtwoord = $_POST['wachtwoord'];
     $studentnummer = $_POST['studentnummer'];
+    // Alleen het geslacht opvangen als er een geslecteerd is.
     if (!empty($_POST['geslacht'])) {
         $geslacht = $_POST['geslacht'];
     }
@@ -87,26 +89,11 @@ if (isset($_POST['registreren'])) {
             $naam = $voornaam;
             $naam .= " " . $achternaam;
 
-            // Bouw de query voor het inserten van de user.
-            $sql = "INSERT INTO users (name, email, password, studentnr, geslacht)
-                VALUES ('" . $naam . "', '" . $email . "','" . md5($wachtwoord) . "','" . $studentnummer . "', '" . $geslacht . "')";
-
-            $db = DBconnection::getConnection();
-
-            if ($db->connect_error) {
-                die("Connection failed: " . $db->connect_error);
-            }
-
-            if ($db->query($sql) === TRUE) {
-                header("Location: login.php");
-                die();
-            } else {
-                var_dump("Error: " . $sql . "<br>" . $db->error);
-            }
-            // connectie weer sluiten
-
-            $db = null;
+            // Roep functie aan die user aanmaakt
+            registreerNieuweUser($naam, $email, md5($wachtwoord), $studentnummer, $geslacht);
         } else {
+
+            // Geef error dat er al een gebruiker met dit mail adres is.
             $emailErr = "Dit email adres is al geregistreert";
         }
 

@@ -18,20 +18,10 @@ if (isset($_POST['overmaken'])) {
 
     if (empty($aantalErr)) {
         if (getSaldo($_SESSION['user_id']) >= $aantal) {
-            removeSaldo($aantal);
             transferSaldo($aantal, $ontvangerEmail, $beschrijving, $_SESSION['email']);
         } else {
             $aantalErr = "Je hebt niet genoeg saldo";
         }
     }
 
-}
-
-function removeSaldo($aantal) {
-    
-    echo "Ik ga $aantal saldo afschrijven bij " . $_SESSION['naam'];
-}
-
-function transferSaldo($aantal, $ontvangerEmail, $beschrijving, $email) {
-    echo "Ik $email ga $aantal overmaken naar $ontvangerEmail en wil dit er bij zeggen: $beschrijving";
 }
