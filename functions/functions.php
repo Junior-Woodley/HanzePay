@@ -191,7 +191,7 @@ function getRecentActivity($user_id) {
 
     checkconnection($db);
 
-    $sqlGetActivity = "SELECT t.idTransaction as 'transactionID', t.amount as 'amount', t.description as 'description' ,DAY(t.createdDate) as 'day', MONTH(t.createdDate) as 'month', YEAR(t.createdDate) as 'year'
+    $sqlGetActivity = "SELECT t.sender_user_id as 'sender_id', t.receiver_user_id as 'receiver_id', t.idTransaction as 'transactionID', t.amount as 'amount', t.description as 'description' ,DAY(t.createdDate) as 'day', MONTH(t.createdDate) as 'month', YEAR(t.createdDate) as 'year'
                         FROM users u
                         INNER JOIN wallets w ON w.idUser = u.idUser
                         INNER JOIN transaction_has_wallets thw ON thw.wallet_id = w.idWallet
@@ -202,12 +202,72 @@ function getRecentActivity($user_id) {
 
     if ($results->num_rows > 0) {
         while ($row = $results->fetch_assoc()) {
-        // Doe dingen met de data
+            if ($user_id = $row['sender_id']) {
+
+                $receiverName = getUserInfo($row['receiver_id']);
+                echo "<div class='transaction-row p-2'>
+                            <div class='row'>
+                                <div class='col-md-2 col-3 text-center float-left'>
+                                <span class='transfer-datum'>
+                                " . $row['day'] . " - " . $row['month'] . " " . $row['year'] . "
+                                </span>
+                                </div>
+                                <div class='col-md-6 col-5 float-left p-1'>
+                                    <h5 class='transfer-text'>$receiverName</h5>
+                                    <sup class='xs-text'>" . $row['description'] . "</sup>
+                                </div>
+                                <div class='col-md-4 col-4 text-right' style='color: green'>
+                                <b>
+                                    + " . $row['amount'] . " HP
+                                    </b>
+                                </div>
+                            </div>
+                        </div>";
+            } elseif ($user_id = $row['receiver_id']) {
+                
+                $receiverName = getUserInfo($row['sender_id']);
+                echo "<div class='transaction-row p-2'>
+                            <div class='row'>
+                                <div class='col-md-2 col-3 text-center float-left'>
+                                <span class='transfer-datum'>
+                                " . $row['day'] . " - " . $row['month'] . " " . $row['year'] . "
+                                </span>
+                                </div>
+                                <div class='col-md-6 col-5 float-left p-1'>
+                                    <h5 class='transfer-text'>$receiverName</h5>
+                                    <sup class='xs-text'>" . $row['description'] . "</sup>
+                                </div>
+                                <div class='col-md-4 col-4 text-right' style='color: red'>
+                                    <b>
+                                    - " . $row['amount'] . " HP
+                                    </b>
+                                </div>
+                            </div>
+                        </div>";
+            }
         }
     } else {
         // Geef data terug die zeggen dat er nog geen activiteit heeft plaats gevonden
     }
 };
+
+function getUserInfo($user_id) {
+    $db = DBconnection::getConnection();
+
+    checkconnection($db);
+
+    $sql = "SELECT name FROM users WHERE idUser = '" . $user_id . "'";
+
+    $result = $db->query($sql);
+
+    if ($result->num_rows > 0) {
+        $userName = $result->fetch_assoc();
+        return $userName['name'];
+    } else {
+        return "UNKOWN";
+    }
+
+}
 
 // Haalt betaalverzoeken op
 function getPaymentRequest() {
