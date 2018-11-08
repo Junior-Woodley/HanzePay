@@ -23,5 +23,5 @@ if (isset($_POST['overmaken'])) {
             $aantalErr = "Je hebt niet genoeg saldo";
         }
     }
-
 }
+

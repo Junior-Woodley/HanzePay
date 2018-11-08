@@ -86,11 +86,15 @@ if (isset($_POST['registreren'])) {
 
         // Als de gebruiker niet bestaat de user toevoegen.
         if (user_exists($email)) {
-            $naam = $voornaam;
-            $naam .= " " . $achternaam;
+            if (studentnummer_registerd($studentnummer)) {
+                $naam = $voornaam;
+                $naam .= " " . $achternaam;
 
-            // Roep functie aan die user aanmaakt
-            registreerNieuweUser($naam, $email, md5($wachtwoord), $studentnummer, $geslacht);
+                // Roep functie aan die user aanmaakt
+                registreerNieuweUser($naam, $email, md5($wachtwoord), $studentnummer, $geslacht);
+            } else {
+                $studentnummerErr = "Er is al een gebruiker met dit student nummer";
+            }
         } else {
 
             // Geef error dat er al een gebruiker met dit mail adres is.
